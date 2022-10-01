@@ -1,7 +1,9 @@
 package com.example.demo.quote;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity @Table
 public class Quote {
@@ -16,14 +18,20 @@ public class Quote {
             generator = "quote_sequence"
     )
     private Long id;
+
+    @NotNull
     private String name;
+
+    @NotNull
     private String quote;
-    private LocalDate dateUploaded;
+
+    @Temporal(TemporalType.DATE)
+    private Date dateUploaded = new Date();
 
     public Quote() {
     }
 
-    public Quote(String name, String quote, LocalDate dateUploaded) {
+    public Quote(String name, String quote, Date dateUploaded) {
         this.name = name;
         this.quote = quote;
         this.dateUploaded = dateUploaded;
@@ -33,7 +41,7 @@ public class Quote {
             Long id,
             String name,
             String quote,
-            LocalDate dateUploaded) {
+            Date dateUploaded) {
         this.id = id;
         this.name = name;
         this.quote = quote;
@@ -64,11 +72,11 @@ public class Quote {
         this.quote = quote;
     }
 
-    public LocalDate getDateUploaded() {
+    public Date getDateUploaded() {
         return dateUploaded;
     }
 
-    public void setDateUploaded(LocalDate dateUploaded) {
+    public void setDateUploaded(Date dateUploaded) {
         this.dateUploaded = dateUploaded;
     }
 
