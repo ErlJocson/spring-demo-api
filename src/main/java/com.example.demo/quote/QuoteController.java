@@ -15,17 +15,17 @@ public class QuoteController {
         this.quoteService = quoteService;
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/all") @CrossOrigin
     public List<Quote> getQuotes(){
         return quoteService.getQuotes();
     }
 
-    @GetMapping(path = "/1")
+    @GetMapping(path = "/1") @CrossOrigin
     public Quote getRandomQuote() {
         return quoteService.getRandomQuote();
     }
 
-    @PostMapping
+    @PostMapping @CrossOrigin
     public void addQuote(@RequestBody Quote quote){
         quoteService.addNewQuote(quote);
     }
